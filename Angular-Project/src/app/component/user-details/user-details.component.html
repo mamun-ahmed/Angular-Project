@@ -1,0 +1,85 @@
+<div class="container">
+
+    <div class="row">
+        <div class="col md-6">
+            <a routerLink="/" class="btn btn-link">
+                <i class="fa fa-arrow-circle-o-left"></i>
+                Back to Dashboard</a>
+        </div>
+
+        <div class="col md-6">
+
+            <div class="btn-group pull-right">
+                <a routerLink="/user/edit/{{ id }}" class="btn btn-info">Edit</a>
+                <button (click)="onDeleteClick()" class="btn btn-danger">Delete user</button>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="user" class="card">
+      <h3 class="card-header">
+        User Name: {{ user.name }}
+      </h3>
+      <div class="card-body">
+        <div class="row">
+          <div class="cold-md-8 col-sm-6">
+            <h4>User Id: {{ user.id }}</h4>
+            <!-- <h4></h4>
+            <h4></h4>
+            <h4>User Email: {{ user.email }}</h4>
+            <h4></h4>
+            <h4></h4>
+            <h4></h4>
+            <h4></h4>
+            <h4></h4>
+            <h4></h4>
+            <h4>}</h4> -->
+          </div>
+          <div class="cold-md-8 col-sm 6">
+            <h3 class="pull-right">
+              Balance:
+              <span
+              [class.text-success]="hasBalance"
+              [class.text-danger]="!hasBalance"
+              >
+                {{ user.balance | currency:"USD":"৳" }}
+              </span>
+              <small>
+                <a (click)="showBalanceUpdateInput = !showBalanceUpdateInput">
+                  <i class="fa fa-pencil"></i>
+                </a>
+              </small>
+            </h3>
+            <div class="clearfix">
+              <form *ngIf="showBalanceUpdateInput" (submit)="updateBalance()">
+                <div class="input-group">
+                  <input
+                    type="text"
+                    name="balance"
+                    class="form-control"
+                    [(ngModel)]="user.balance">
+                    <span class="input-group-btn">
+                      <button type="submit" class="btn btn-primary">Update</button>
+                    </span>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <ul class="list-group">
+          <li class="list-group-item">User Address: {{ user.address }} </li>
+          <li class="list-group-item">User Area: {{ user.area }} </li>
+          <li class="list-group-item">Contact Email: {{ user.email }} </li>
+          <li class="list-group-item">User OrderDate: {{ user.orderDate }}</li>
+          <li class="list-group-item">User OrderHard: {{ user.orderHard }}</li>
+          <li class="list-group-item">User OrderId: {{ user.orderId }}</li>
+          <li class="list-group-item">User OrderImage: {{ user.orderImage }}</li>
+          <li class="list-group-item">User OrderTime: {{ user.orderTime }}</li>
+          <li class="list-group-item">User Phone-No: {{ user.phone }}</li>
+          <li class="list-group-item">User UserPhoto: {{ user.userPhoto }}</li>
+        </ul>
+      </div>
+
+    </div>
+</div>

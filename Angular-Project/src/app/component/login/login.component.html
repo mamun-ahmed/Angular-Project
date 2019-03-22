@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="text-center pb-4 pt-3">
+            <span class="text-primary"><i class="fa fa-lock"></i>
+              User Login
+            </span>Page
+          </h4>
+          <form (submit)="onSubmit()">
+            <div class="form-group">
+              <label for="email"></label>
+              <input
+                  type="text"
+                  name="email"
+                  class="form-control"
+                  #userEmail="ngModel"
+                  [ngClass]="{'is-invalid':userEmail.errors && userEmail.touched}"
+                  [(ngModel)]="email"
+                  required
+                  placeholder="Email"
+                  pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
+              >
+              <div style="color:red; font-weight:bold;margin-top:20px;" [hidden]="!userEmail.errors?.required" class="invalid-feedback">Email must be required</div>
+
+              <div style="color:red; font-weight:bold;margin-top:20px;" [hidden]="!userEmail.errors?.pattern" class="invalid-feedback">Email not valid</div>
+
+              <div class="form-group">
+                <label for="password"></label>
+                <input
+                  type="password"
+                  name="password"
+                  class="form-control"
+                  [(ngModel)]="password"
+                  required
+                  placeholder="Password"
+              >
+              </div>
+              <div class="form-group text-center">
+                <input type="submit" value="Login" class="btn btn-lg btn-info"aria-pressed="true"> or
+                <input routerLink="/register" type="submit" value="Register" class="btn btn-lg btn-info" aria-pressed="true">
+              </div>
+
+
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    </div>
+</div>
+
+

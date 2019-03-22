@@ -1,0 +1,51 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav *ngIf="isLoggedIn" #drawer
+      class="sidenav"
+      fixedInViewport="false"
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="!(isHandset$ | async)">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item href="#" routerLink="/">Dashboard</a>
+      <a mat-list-item routerLink="/">AppSliderImage</a>
+      <a mat-list-item routerLink="/">HelthTips</a>
+      <a mat-list-item routerLink="/medicines-ads">MedicineAds</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>PharmaQuick</span>
+
+
+      <span class="spacer"></span>
+      <a *ngIf="!isLoggedIn" mat-list-item routerLink="/register">Register</a>
+      <a *ngIf="!isLoggedIn" mat-list-item routerLink="/login">Login</a>
+
+
+      <!-- When user Logged In show this part-->
+      <a *ngIf="isLoggedIn" mat-list-item routerLink="/">Dashboard</a>
+      <a *ngIf="isLoggedIn" mat-list-item >{{ LoggedInUser }}</a>
+      <a href="#" *ngIf="isLoggedIn" mat-list-item (click)="onLogoutClick()">Logout</a>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+
+
+
+
+
+
+

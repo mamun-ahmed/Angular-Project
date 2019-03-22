@@ -1,0 +1,81 @@
+<div class="container">
+
+  <div class="col-md-6">
+    <a routerLink="/" class="btn btn-link">
+      <i class="fa fa-arrow-circle-o-left"></i> Back to DashBoard
+    </a>
+  </div>
+  <div class="col-md-6 mx-auto">
+
+
+  <div class="row">
+    <div class="card">
+      <div class="card-header">
+          <div class="h4 text-center">
+              <span class="text-info">
+                  Add Medicine
+              </span>
+          </div>
+        </div>
+
+        <div class="card-body">
+
+          <!-- Form Start -->
+          <form (submit)="onSubmit()">
+            <div class="form-group">
+              <div class="form-gour">
+
+                <!--Medicine Name-->
+                <label for="title">Medicine Name</label>
+                <input
+                    type="text"
+                    name="title"
+                    class="form-control"
+                    required
+                    placeholder="Enter Medicine Name"
+                    >
+              </div>
+                <!--Medicine Description-->
+                <div class="form-group">
+                  <label for="description">Description</label>
+                  <textarea name="description" class="form-control" rows="4" cols="50" placeholder="Enter some description...."></textarea>
+                </div>
+
+                <!--Generic Name-->
+                  <div class="form-group">
+
+                    <label for="genericName">Generic Name</label>
+                    <input
+                        type="text"
+                        name="genericName"
+                        class="form-control"
+                        required
+                        placeholder="Enter Generic Name"
+                        >
+                   </div>
+
+                <!--Company Name-->
+                  <div class="form-group">
+                      <label for="companyName">Company Name</label>
+                      <input
+                          type="text"
+                          name="companyName"
+                          class="form-control"
+                          required
+                          placeholder="Company Name"
+                          >
+                  </div>
+               <!-- Submit Button-->
+
+                <input type="submit" class="btn btn-lg btn-success" value="Submit">or
+                <input routerLink="/" type="submit" class="btn btn-lg btn-basic" value="Cancel">
+
+            </div>
+
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

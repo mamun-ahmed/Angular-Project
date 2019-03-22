@@ -1,0 +1,76 @@
+<div class="row">
+    <div class="col-md-6">
+        <h2>
+            <i class="fa fa-users"></i>Users</h2>
+
+    </div>
+    <div class="col-md-6">
+        <h5 class="text-right text-info">TotalBalance: {{ totalBalance | currency: "USD": "৳" }}</h5>
+    </div>
+</div>
+
+
+<div class="container">
+    <!--Table Start for user Details -->
+    <table *ngIf="users?.length > 0; else noUsers" class="table table-striped">
+          <thead class="table-invarse">
+            <tr>
+
+                <th>Name</th>
+                <th>Area</th>
+                <th>Balance</th>
+                <th>Email</th>
+
+                <th>OrderId</th>
+
+                <th>Phone-No</th>
+                <th></th>
+            </tr>
+
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let user of users">
+                <td>
+                  {{ user.name }}
+                </td>
+                <td>
+                    {{ user.area }}
+                </td>
+                <td>
+                    {{ user.balance | currency: "USD": "৳" }}
+                </td>
+                <td>
+                    {{ user.email }}
+                </td>
+
+                <td>
+                    {{ user.orderId }}
+                </td>
+
+                <td>
+                    {{ user.phone }}
+                </td>
+
+                <td>
+                  <!--routerLink="user/{{ user.id }}"-->
+                    <a [routerLink]="['/user/'+user.id]" class="btn btn-info btn-sm">
+                        <i class="fa fa-arrow-circle-o-right"></i>
+                        Details</a>
+                </td>
+            </tr>
+        </tbody>
+
+
+    </table>
+  </div>
+
+
+
+
+
+
+  <ng-template #noUsers>
+    <hr>
+    <h1>This client page still no clients</h1>
+  </ng-template>

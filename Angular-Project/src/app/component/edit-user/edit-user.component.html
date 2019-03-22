@@ -1,0 +1,225 @@
+<div class="container">
+  <div class="row">
+      <div class="col-md-6">
+          <a routerLink="/user/{{id}}" class="btn btn-link">
+              <i class="fa fa-arrow-circle-o-left"></i> Back to User</a>
+      </div>
+      <div class="col-md-6">
+
+      </div>
+  </div>
+
+
+<div class="card">
+  <div class="card-header">
+    Edit User
+  </div>
+
+<div class="card-body">
+    <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
+
+<!-- Address input fill-->
+      <div class="form-group">
+        <label for="address">Address:</label>
+        <input
+            type="text"
+            class="form-control"
+            name="address"
+            #userAddress="ngModel"
+            [ngClass]="{'is-invalid':userAddress.errors && userAddress.touched}"
+            [(ngModel)]="user.address"
+            minlength="3"
+            required
+        >
+
+        <div [hidden]="!userAddress.errors?.required" class="invalid-feedback">Address must fill</div>
+
+        <div [hidden]="!userAddress.errors?.minlength" class="invalid-feedback">Address must be 3 or more character</div>
+
+      </div>
+
+<!-- Area input fill-->
+      <div class="form-group">
+          <label for="area">Area:</label>
+          <input
+              type="text"
+              class="form-control"
+              name="area"
+              #userArea="ngModel"
+              [ngClass]="{'is-invalid':userArea.errors && userArea.touched}"
+              [(ngModel)]="user.area"
+              minlength="3"
+              required
+          >
+
+          <div [hidden]="!userArea.errors?.required" class="invalid-feedback">Area must fill</div>
+
+          <div [hidden]="!userArea.errors?.minlength" class="invalid-feedback">Area must be 3 or more character</div>
+
+        </div>
+
+
+<!-- Balance input fill-->
+      <div class="form-group">
+          <label for="balance">Balance:</label>
+          <input
+              type="number"
+              class="form-control"
+              name="balance"
+              #userBalance="ngModel"
+              [ngClass]="{'is-invalid':userBalance.errors && userBalance.touched}"
+              [(ngModel)]="user.balance"
+              [disabled]= "disableBalanceOnAdd">
+        </div>
+
+<!-- Email input fill-->
+      <div class="form-group">
+          <label for="email">Email*</label>
+          <input
+              type="text"
+              class="form-control"
+              name="email"
+              #userEmail="ngModel"
+              [ngClass]="{'is-invalid':userEmail.errors && userEmail.touched}"
+              [(ngModel)]="user.email"
+              required
+              pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
+          >
+
+          <div style="color:red; font-weight:bold;margin-top:20px;" [hidden]="!userEmail.errors?.required" class="invalid-feedback">Email must be required</div>
+
+          <div style="color:red; font-weight:bold;margin-top:20px;" [hidden]="!userEmail.errors?.pattern" class="invalid-feedback">Email not valid</div>
+
+        </div>
+
+<!-- Name input fill-->
+      <div class="form-group">
+          <label for="name">Name*:</label>
+          <input
+              type="text"
+              class="form-control"
+              name="name"
+              #userName="ngModel"
+              [ngClass]="{'is-invalid':userName.errors && userName.touched}"
+              [(ngModel)]="user.name"
+              minlength="3"
+              required
+          >
+
+          <div [hidden]="!userName.errors?.required" class="invalid-feedback">Name must be required</div>
+
+          <div [hidden]="!userName.errors?.minlength" class="invalid-feedback">Name must be 3 or more character</div>
+
+        </div>
+
+
+<!-- OrderDate input fill-->
+      <div class="form-group">
+          <label for="orderDate">Date*:</label>
+          <input
+              type="date"
+              class="form-control"
+              name="orderDate"
+              #userOrderDate="ngModel"
+              [ngClass]="{'is-invalid':userOrderDate.errors && userOrderDate.touched}"
+              [(ngModel)]="user.orderDate"
+              required
+          >
+
+          <!--<div [hidden]="!userDate.errors?.required" class="invalid-feedback">Right Date</div>-->
+
+        </div>
+
+
+
+<!-- OrderId input fill-->
+      <div class="form-group">
+          <label for="orderId">OrderId:</label>
+          <input
+              type="text"
+              class="form-control"
+              name="orderId"
+              #userOrderId="ngModel"
+              [ngClass]="{'is-invalid':userOrderId.errors && userOrderId.touched}"
+              [(ngModel)]="user.orderId"
+              minlength="3"
+              required
+          >
+
+          <div [hidden]="!userOrderId.errors?.required" class="invalid-feedback">provide your order id</div>
+
+          <div [hidden]="!userOrderId.errors?.minlength" class="invalid-feedback">provide a order Id minimum 3 number</div>
+
+        </div>
+
+<!-- OrderImage input fill-->
+        <div class="form-group">
+            <label for="orderImage">OrderImage: </label>
+            <input
+                type="file"
+                name="orderImage"
+                #userOrderImage="ngModel"
+                [ngClass]="{'is-invalid':userOrderImage.errors && userOrderImage.touched}"
+                [(ngModel)]="user.orderImage"
+                required
+            >
+
+            <div [hidden]="!userOrderImage.errors?.required" class="invalid-feedback">provide a Image</div>
+
+          </div>
+
+<!-- OrderTime input fill-->
+        <div class="form-group">
+            <label for="orderTime">Time:</label>
+            <input
+                type="time"
+                name="orderTime"
+                #userOrderTime="ngModel"
+                [ngClass]="{'is-invalid':userOrderTime.errors && userOrderTime.touched}"
+                [(ngModel)]="user.orderTime"
+                required
+            >
+
+            <div [hidden]="!userOrderTime.errors?.required" class="invalid-feedback">Time</div>
+
+          </div>
+
+<!-- PhoneNo input fill-->
+        <div class="form-group">
+            <label for="phone">Phone-No:</label>
+            <input
+                type="text"
+                class="form-control"
+                name="phone"
+                #userPhone="ngModel"
+                [ngClass]="{'is-invalid':userPhone.errors && userPhone.touched}"
+                [(ngModel)]="user.phone"
+                minlength="11"
+            >
+            <div [hidden]="!userPhone.errors?.minlength" class="invalid-feedback">Phone number must be 11 latter</div>
+
+          </div>
+
+
+<!-- UserPhoto input fill-->
+        <div class="form-group">
+            <label for="userPhoto">User Photo: *  </label>
+            <input
+                type="file"
+                name="userPhoto"
+                #userUserPhoto="ngModel"
+                [ngClass]="{'is-invalid':userUserPhoto.errors && userUserPhoto.touched}"
+                [(ngModel)]="user.userPhoto"
+                required
+            >
+
+            <div [hidden]="!userUserPhoto.errors?.required" class="invalid-feedback">Provide a valid Photo</div>
+
+          </div>
+
+          <input type="submit" class="btn btn-success" value="Submit Data">
+
+    </form>
+</div>
+</div>
+</div>
